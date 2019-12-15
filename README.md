@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ToDo app with React Hooks
+
+Its a simple todo app made only with functional components and react hooks to manage the state and store the todo item as json data using a small backend written with expressJs which only has two endpoints for getting the data and writing the data in the `items.json` file.
 
 ## Available Scripts
 
