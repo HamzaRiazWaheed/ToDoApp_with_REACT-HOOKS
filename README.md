@@ -6,6 +6,10 @@ Its a simple todo app made only with functional components and react hooks to ma
 
 In the project directory, you can run:
 
+### `npm dev`
+
+Runs the `npm start` and runs the backend on [http://localhost:1234](http://localhost:1234)
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
