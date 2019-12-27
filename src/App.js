@@ -5,12 +5,12 @@ import {ListContextProvider} from './context/index';
 
 const App = () => {
   return (
-      <ListContextProvider>
-        <div className="App">
-          <h2>Todo List</h2>
-          <TodoList></TodoList>
-        </div>
-      </ListContextProvider>
+    <ListContextProvider>
+      <div className="App">
+        <h2>Todo List</h2>
+        <TodoList></TodoList>
+      </div>
+    </ListContextProvider>
   );
 }
 

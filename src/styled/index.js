@@ -13,12 +13,12 @@ export const Button = styled.button`
         {
             if(props.primary && css){
             return `
-                background: palevioletred;
+                background-color: palevioletred;
                 color: white;
             `
             }else if(props.delete && css){
             return `
-                background: orange;
+                background-color: orange;
                 color: white;
             `
             }

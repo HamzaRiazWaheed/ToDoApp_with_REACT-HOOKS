@@ -5,40 +5,52 @@ import uuid from 'uuid';
 let list = []
 
 const Dispatchers = (state, action) => {
+    let newState = [];
     switch (action.type) {
         case 'LOAD_ALL': {
-            return action.list
+            newState = action.list;
+            break;
         }
         case 'ADD':{
-            return [...state , {id:uuid(),checked:false, text:`Task ${state.length + 1}`}]
+            newState = [...state , {id:uuid(),checked:false, text:`Task ${state.length + 1}`}]
+            break;
         }
         case 'UPDATE': {
-            return _updateItem(state, action.item)
+            newState = _updateItem(state, action.item)
+            break;
         }
         case 'TOGGLE_CHECKED': {
-            return _updateItem(state, {...action.item , checked: !action.item.checked})
+            newState = _updateItem(state, {...action.item , checked: !action.item.checked})
+            break;
         }
         case 'DELETE': {
-            return state.filter(item => {
+            newState = state.filter(item => {
                 return item.id !== action.id
             })
+            break;
         }
         case 'DELETE_ALL': {
-            return []
+            newState = []
+            break;
         }
         case 'DELETE_COMPLETED': {
-            return state.filter(item => {
+            newState = state.filter(item => {
                 return !item.checked
             })
+            break;
         }
         default:
-            return state;
+            newState = state;
+            break;
     }
+
+    return newState
 }
 
 let listReducer = (state, action) => {
     console.log(state, action)
     const newState = Dispatchers(state, action);
+    
     fetch('http://localhost:1234/api/UpdateItems/', {
         method: 'POST',
         body: JSON.stringify(newState),
@@ -46,8 +58,9 @@ let listReducer = (state, action) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-    }).then(res => res.json())
-    .then(res => console.log('data saved'))
+    }).then(res => {console.log('data saved'); })
+    .catch(e => console.log(e))
+    
     return newState;
 
 }

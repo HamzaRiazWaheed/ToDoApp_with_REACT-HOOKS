@@ -3,12 +3,12 @@ import {ListContext} from '../context/index'
 import TodoItem from './todoItem'
 import {Button, SplitView} from '../styled/index';
 
-const TodoList = (props) => {
+const TodoList = () => {
     const {state, dispatch} = useContext(ListContext);
     let completed = []
     let incomplete = []
-    console.log(props);
-    state.forEach(item => {
+
+    state && state.forEach(item => {
         return item.checked ? completed.push(<TodoItem key={item.id} {...item}></TodoItem>) : incomplete.push(<TodoItem key={item.id} {...item}></TodoItem>)
     });
     return (
